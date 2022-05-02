@@ -4,7 +4,7 @@ This is a Typescript/React application to help users manage projects by creating
 
 ## Install and Set Up
 
-Follow the README on [this repo]() to set up the Express.js server.
+Follow the README on [this repo](https://github.com/pthan1/bowtie-todo-app-api) to set up the Express.js server.
 
 After setting up the server, to run the application:
 
