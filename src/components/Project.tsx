@@ -33,7 +33,7 @@ const Project = ({ id, name, onProjectChanged, tasks }: ProjectProps) => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        name: taskLabelEntryText,
+        label: taskLabelEntryText,
       }),
     })
       .then((res) => res.json())
@@ -56,8 +56,14 @@ const Project = ({ id, name, onProjectChanged, tasks }: ProjectProps) => {
           />
         </form>
         {tasks.length === 0 && "There are no tasks."}
-        {tasks.map(({ id, is_completed, label }) => (
-          <Task id={id} isCompleted={is_completed} label={label} />
+        {tasks.map(({ id: taskId, is_completed, label }) => (
+          <Task
+            id={taskId}
+            isCompleted={is_completed}
+            label={label}
+            onTaskEditedOrDeleted={onProjectChanged}
+            projectId={id}
+          />
         ))}
       </>
     </div>

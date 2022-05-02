@@ -10,7 +10,6 @@ export interface Project extends Entity {
 }
 
 export interface Task extends Entity {
-  created_at: string;
+  is_completed: boolean;
   label: string;
-  isCompleted: boolean;
 }
