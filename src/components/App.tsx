@@ -18,9 +18,7 @@ const App = () => {
         return response.json();
       })
       .then((data) => {
-        if (data.length !== 0) {
-          setProjects(data);
-        }
+        setProjects(data);
       })
       .catch((error) => console.log(error));
   }, [changedProjectIds]);
@@ -35,7 +33,7 @@ const App = () => {
       }),
     })
       .then((res) => res.json())
-      .then((data) => setChangedProjectIds(data))
+      .then((data) => setChangedProjectIds([...changedProjectIds, data]))
       .catch((error) => console.log(error));
   };
 
@@ -57,7 +55,7 @@ const App = () => {
           <Project
             id={id}
             name={name}
-            onProjectDeleted={(id) =>
+            onProjectChanged={(id) =>
               setChangedProjectIds([...changedProjectIds, id])
             }
             tasks={tasks}
