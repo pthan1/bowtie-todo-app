@@ -1,10 +1,11 @@
-import React, { MouseEventHandler, useEffect, useState } from "react";
+import React, { MouseEventHandler } from "react";
 
+import "./Task.css";
 import { EntityId } from "../types/.d";
 
 interface TaskProps {
   id: EntityId;
-  isCompleted: boolean;
+  isComplete: boolean;
   label: string;
   onTaskEditedOrDeleted: (id: EntityId) => void;
   projectId: EntityId;
@@ -12,7 +13,7 @@ interface TaskProps {
 
 const Task = ({
   id,
-  isCompleted,
+  isComplete,
   label,
   onTaskEditedOrDeleted,
   projectId,
@@ -28,17 +29,25 @@ const Task = ({
       .catch((error) => console.log(error));
   };
   return (
-    <>
-      <h3 style={{ textDecorationLine: isCompleted ? "line-through" : "none" }}>
-        {label}
-      </h3>
-      <button id="delete" onClick={handleDeleteButtonClick}>
-        Delete Task
-      </button>
-      <button id="mark-complete" onClick={handleDeleteButtonClick}>
-        Mark Complete
-      </button>
-    </>
+    <div className="task-list">
+      <>
+        <div className="task-header">
+          <p
+            style={{ textDecorationLine: isComplete ? "line-through" : "none" }}
+          >
+            {label}
+          </p>
+          <div className="task-button-container">
+            <button id="mark-complete" onClick={handleDeleteButtonClick}>
+              Mark Complete
+            </button>
+            <button id="delete" onClick={handleDeleteButtonClick}>
+              Delete Task
+            </button>
+          </div>
+        </div>
+      </>
+    </div>
   );
 };
 

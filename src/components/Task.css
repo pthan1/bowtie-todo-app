@@ -1,0 +1,16 @@
+.task-list {
+  text-align: left;
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: space-between;
+  margin-bottom: 1rem;
+  /* flex-wrap: wrap; */
+}
+
+.task-button-container {
+  display: flex;
+  flex-direction: column;
+}

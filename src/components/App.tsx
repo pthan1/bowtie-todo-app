@@ -11,12 +11,7 @@ const App = () => {
 
   useEffect(() => {
     fetch("http://localhost:3001/api/v1/projects")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Status: ${response.status}`);
-        }
-        return response.json();
-      })
+      .then((res) => res.json())
       .then((data) => {
         setProjects(data);
       })
@@ -39,28 +34,37 @@ const App = () => {
 
   return (
     <div className="App">
+      <div className="header" />
+      <h1>Do It With Style</h1>
       <>
         <form onSubmit={onSubmit}>
-          <label htmlFor="name">New Project Name</label>
-          <input
-            type="text"
-            id="New Project Name"
-            value={projectNameEntryText}
-            onChange={(e) => setProjectNameEntryText(e.target.value)}
-          />
+          <div className="input-wrapper">
+            <label htmlFor="name" className="form-labels">
+              Add A Project
+            </label>
+            <input
+              type="text"
+              id="New Project Name"
+              value={projectNameEntryText}
+              onChange={(e) => setProjectNameEntryText(e.target.value)}
+            />
+          </div>
         </form>
         {projects.length === 0 && "There are no projects."}
-
-        {projects.map(({ id, name, tasks }) => (
-          <Project
-            id={id}
-            name={name}
-            onProjectChanged={(id) =>
-              setChangedProjectIds([...changedProjectIds, id])
-            }
-            tasks={tasks}
-          />
-        ))}
+        <div className="container">
+          <ul className="grid">
+            {projects.map(({ id, name, tasks }) => (
+              <Project
+                id={id}
+                name={name}
+                onProjectChanged={(id) =>
+                  setChangedProjectIds([...changedProjectIds, id])
+                }
+                tasks={tasks}
+              />
+            ))}
+          </ul>
+        </div>
       </>
     </div>
   );

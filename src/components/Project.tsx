@@ -1,10 +1,6 @@
-import React, {
-  FormEventHandler,
-  MouseEventHandler,
-  useEffect,
-  useState,
-} from "react";
+import React, { FormEventHandler, MouseEventHandler, useState } from "react";
 
+import "./Project.css";
 import { EntityId, Task as APITask } from "../types/.d";
 import Task from "./Task";
 
@@ -42,31 +38,37 @@ const Project = ({ id, name, onProjectChanged, tasks }: ProjectProps) => {
   };
 
   return (
-    <div>
+    <li className="grid-item">
       <>
-        <h2>{name}</h2>
-        <button onClick={handleDeleteButtonClick}>Delete Project</button>
-        <form onSubmit={onSubmit}>
-          <label htmlFor="New Task">New Task</label>
-          <input
-            type="text"
-            id="New Task"
-            value={taskLabelEntryText}
-            onChange={(e) => setTasklabelEntryText(e.target.value)}
-          />
-        </form>
-        {tasks.length === 0 && "There are no tasks."}
-        {tasks.map(({ id: taskId, is_completed, label }) => (
-          <Task
-            id={taskId}
-            isCompleted={is_completed}
-            label={label}
-            onTaskEditedOrDeleted={onProjectChanged}
-            projectId={id}
-          />
-        ))}
+        <article>
+          <div className="project-header">
+            <h2>{name}</h2>
+            <button onClick={handleDeleteButtonClick}>Delete</button>
+          </div>
+          <hr className="horiz-rule" />
+          <form onSubmit={onSubmit}>
+            <label htmlFor="New Task">Add A Task</label>
+            <input
+              type="text"
+              id="New Task"
+              className="task-input"
+              value={taskLabelEntryText}
+              onChange={(e) => setTasklabelEntryText(e.target.value)}
+            />
+          </form>
+          {tasks.length === 0 && "There are no tasks."}
+          {tasks.map(({ id: taskId, is_complete, label }) => (
+            <Task
+              id={taskId}
+              isComplete={is_complete}
+              label={label}
+              onTaskEditedOrDeleted={onProjectChanged}
+              projectId={id}
+            />
+          ))}
+        </article>
       </>
-    </div>
+    </li>
   );
 };
 
