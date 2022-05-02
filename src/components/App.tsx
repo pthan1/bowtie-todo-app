@@ -55,6 +55,7 @@ const App = () => {
           <ul className="grid">
             {projects.map(({ id, name, tasks }) => (
               <Project
+                key={id}
                 id={id}
                 name={name}
                 onProjectChanged={(id) =>

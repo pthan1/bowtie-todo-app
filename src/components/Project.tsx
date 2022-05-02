@@ -59,6 +59,7 @@ const Project = ({ id, name, onProjectChanged, tasks }: ProjectProps) => {
           {tasks.length === 0 && "There are no tasks."}
           {tasks.map(({ id: taskId, is_complete, label }) => (
             <Task
+              key={id}
               id={taskId}
               isComplete={is_complete}
               label={label}
