@@ -42,7 +42,6 @@ const App = () => {
   return (
     <div className="App">
       <>
-        {projects.length === 0 && "There are no projects."}
         <form onSubmit={onSubmit}>
           <label htmlFor="name">New Project Name</label>
           <input
@@ -52,8 +51,17 @@ const App = () => {
             onChange={(e) => setProjectNameEntryText(e.target.value)}
           />
         </form>
+        {projects.length === 0 && "There are no projects."}
+
         {projects.map(({ id, name, tasks }) => (
-          <Project id={id} name={name} tasks={tasks} />
+          <Project
+            id={id}
+            name={name}
+            onProjectDeleted={(id) =>
+              setChangedProjectIds([...changedProjectIds, id])
+            }
+            tasks={tasks}
+          />
         ))}
       </>
     </div>
