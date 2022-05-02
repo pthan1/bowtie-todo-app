@@ -12,4 +12,4 @@ After setting up the server, to run the application:
 2. `cd` into `bowtie-todo`
 3. `npm install`
 4. `npm start`
-5. Navigate to `http://localhost:3000/` in your browser.
+5. Navigate to `http://localhost:3000/` in your browser to start the app.
