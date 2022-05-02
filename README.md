@@ -1,6 +1,9 @@
 #Todo App
+"Do It With Style"
 
-This is a Typescript/React application to help users manage projects by creating and keeping track of tasks to do. Once tasks are completed, users will be able to strike them on the list. Users are able to delete projects and tasks. For any project that you need to get across the finish line, you can do it with style.
+This is a Typescript/React application to help users manage projects by creating and keeping track of tasks to do with Style. Once tasks are completed, users will be able to strike them on the list. Users are able to delete projects and tasks. 
+
+For any project that you need to get across the finish line, you can Do It With Style.
 
 ## Install and Set Up
 
